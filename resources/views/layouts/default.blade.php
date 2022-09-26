@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>@yield('title', 'Laravel App')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-  </head>
-  <body>
+</head>
+
+<body>
     @include('layouts._header')
 
     <div class="container">
         <div class="offset-md-1 col-md-10">
-        @yield('content')
-        @include('layouts._footer')
-      </div>
+            @yield('content')
+            @include('layouts._footer')
+        </div>
     </div>
-  </body>
+</body>
+
 </html>
