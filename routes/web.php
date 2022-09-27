@@ -19,3 +19,4 @@ Route::get('/about', 'StaticPagesController@about')->name('about');
 
 // ログイン
 Route::get('signup', 'UsersController@create')->name('signup');
+Route::resource('users', 'UsersController');
