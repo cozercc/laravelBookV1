@@ -3,7 +3,7 @@
         <a class="navbar-brand" href="{{ route('home') }}">Laravel App</a>
         <ul class="navbar-nav justify-content-end">
             @if (Auth::check())
-                <li class="nav-item"><a class="nav-link" href="#">用户列表</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">用户列表</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -14,7 +14,7 @@
                         <a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">编辑资料</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" id="logout" href="#">
-                          {{-- 退出登录 --}}
+                            {{-- 退出登录 --}}
                             <form action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -23,10 +23,10 @@
                         </a>
                     </div>
                 </li>
-                @else
+            @else
                 <li class="nav-item"><a class="nav-link" href="{{ route('help') }}">Help</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-                @endif
+                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+            @endif
         </ul>
     </div>
 </nav>
