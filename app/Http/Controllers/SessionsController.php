@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        // 只有未登录用户可以访问登录和注册页面
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
     public function create(){
         return view('sessions.create');
     }
@@ -19,9 +27,11 @@ class SessionsController extends Controller
 
         if(Auth::attempt($credentials, $request->has('remember'))){
             session()->flash('success', 'Welcome back!');
-            return redirect()->route('users.show', [Auth::user()]);
+            // 登录后跳转到上次请求的页面，如果没有记录，则跳转到默认的$fallback
+            $fallback = route('users.show', Auth::user());
+            return redirect()->intended($fallback);
         } else {
-            session()->flash('danger', 'Sorry, your email or password is not right');
+            session()->flash('danger', '抱歉，密码或者邮箱错误');
             return redirect()->back()->withInput();
         }
     }

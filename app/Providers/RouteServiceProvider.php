@@ -17,7 +17,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    // 修改默认跳转URL
+    public const HOME = '/';
 
     public $namespace = 'App\\Http\\Controllers';
     /**
